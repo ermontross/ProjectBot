@@ -1,10 +1,8 @@
-starter-python-bot
+ProjectBot
 =============
 
 ## Overview
-A simple starting point for creating a Beep Boop hostable, Python based Slack bot.
-
-Visit [Beep Boop](https://beepboophq.com/docs/article/overview) to get the scoop on the the Beep Boop hosting platform. The Slack API documentation can be found [here](https://api.slack.com/).
+Based on the python-starter-bot from and hosted on [Beep Boop](https://beepboophq.com/docs/article/overview)
 
 ## Assumptions
 * You have already signed up with [Beep Boop](https://beepboophq.com) and have a local fork of this project.
@@ -32,7 +30,7 @@ If you want change the logging level, prepend `export LOG_LEVEL=<your level>; ` 
 If you have linked your local repo with the Beep Boop service (check [here](https://beepboophq.com/0_o/my-projects)), changes pushed to the remote master branch will automatically deploy.
 
 ### First Conversations
-When you go through the `Add your App to Slack` flow, you'll setup a new Bot User and give them a handle (like @python-rtmbot).
+When you go through the `Add your App to Slack` flow, you'll setup a new Bot User and give them a handle (like @projectbot).
 
 Here is an example interaction dialog that works with this bot:
 ```
