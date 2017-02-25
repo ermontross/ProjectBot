@@ -24,7 +24,8 @@ class Messenger(object):
             "I'm your friendly Slack bot written in Python.  I'll *_respond_* to the following commands:",
             "> `hi <@" + bot_uid + ">` - I'll respond with a randomized greeting mentioning your user. :wave:",
             "> `<@" + bot_uid + "> joke` - I'll tell you one of my finest jokes, with a typing pause for effect. :laughing:",
-            "> `<@" + bot_uid + "> attachment` - I'll demo a post with an attachment using the Web API. :paperclip:")
+            "> `<@" + bot_uid + "> attachment` - I'll demo a post with an attachment using the Web API. :paperclip:",
+            "> `<@" + bot_uid + "> scheudle` - I'll respond with your schedule for the week.")
         self.send_message(channel_id, txt)
 
     def write_greeting(self, channel_id, user_id):
