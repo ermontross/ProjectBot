@@ -10,6 +10,7 @@ class Messenger(object):
     def __init__(self, slack_clients):
         self.clients = slack_clients
         self.schedule = "no schedule right now"
+        self.commitments = dict()
 
     def send_message(self, channel_id, msg):
         # in the case of Group and Private channels, RTM channel payload is a complex dictionary
@@ -70,3 +71,9 @@ class Messenger(object):
     def write_schedule(self, channel_id):
         txt = self.schedule
         self.send_message(channel_id, txt)
+
+    def upate_commitments(self, channel_id, user_id):
+        self.send_message(channel_id, "hello")
+
+    def write_commitments(self, channel_id, user_id):
+        self.send_message(channel_id, "hello")

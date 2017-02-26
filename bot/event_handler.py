@@ -9,6 +9,10 @@ class RtmEventHandler(object):
     def __init__(self, slack_clients, msg_writer):
         self.clients = slack_clients
         self.msg_writer = msg_writer
+        self.stand_up = self.get_standup()
+
+    def get_standup(self):
+        return self.clients.web.channels.get_channel_id('stand-up')
 
     def handle(self, event):
 
@@ -50,12 +54,20 @@ class RtmEventHandler(object):
                     self.msg_writer.demo_attachment(event['channel'])
                 elif 'echo' in msg_txt:
                     self.msg_writer.send_message(event['channel'], msg_txt)
-                elif 'CS Senior Project' in msg_txt:
-                    self.msg_writer.update_schedule(msg_txt)
                 elif 'schedule' in msg_txt:
                     self.msg_writer.write_schedule(event['channel'])
+                elif 'stand-up' in msg_txt or 'commit' in msg_txt:
+                    self.msg_writer.write_commitments(event['channel'], event['user'])
                 else:
                     self.msg_writer.write_prompt(event['channel'])
+
+            elif event['channel'] == self.stand_up:
+                self.msg_writer.update_commitments(self.stand_up, event['user'])
+
+        elif not 'user' in event and self._is_direct_message(event['channel']):
+            msg_txt = event['text']
+            self.msg_writer.update_schedule(msg_txt)
+
 
     def _is_direct_message(self, channel):
         """Check if channel is a direct message channel
