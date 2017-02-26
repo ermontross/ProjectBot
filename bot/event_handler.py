@@ -62,7 +62,7 @@ class RtmEventHandler(object):
                     self.msg_writer.write_prompt(event['channel'])
 
             elif event['channel'] == self.stand_up:
-                self.msg_writer.update_commitments(self.stand_up, event['user'])
+                self.msg_writer.update_commitments(self.stand_up, event['user'], msg_txt)
 
         elif not 'user' in event and self._is_direct_message(event['channel']):
             msg_txt = event['text']
