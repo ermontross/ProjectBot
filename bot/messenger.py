@@ -83,4 +83,4 @@ class Messenger(object):
 
     def write_commitments(self, channel_id, user_id):
         # txt = "Your stand-up message today: " + self.commitments[user_id]
-        self.send_message(channel_id, self.commitments['emma'])
+        self.send_message(channel_id, self.commitments)
