@@ -1,9 +1,10 @@
 # -*- coding: utf-8 -*-
 
+from __future__ import print_function
+
 import logging
 import random
 
-from __future__ import print_function
 import httplib2
 import os
 
