@@ -64,7 +64,7 @@ class RtmEventHandler(object):
             elif event['channel'] == self.stand_up:
                 self.msg_writer.update_commitments(self.stand_up, event['user'], msg_txt)
 
-        elif not 'user' in event and self._is_direct_message(event['channel']):
+        elif 'user' not in event and self._is_direct_message(event['channel']):
             msg_txt = event['text']
             self.msg_writer.update_schedule(msg_txt)
 
