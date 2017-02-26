@@ -2,6 +2,7 @@
 
 import logging
 import random
+import json
 
 logger = logging.getLogger(__name__)
 
@@ -13,8 +14,8 @@ class Messenger(object):
         self.commitments = dict()
 
     def set_commitments(self):
-        json = self.clients.web.users.list
-        for item in json:
+        response = json.dumps(self.clients.web.users.list)
+        for item in response:
             self.commitments[item['id']] = "initial: no commitments"
 
     def send_message(self, channel_id, msg):
