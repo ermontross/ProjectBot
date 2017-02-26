@@ -16,7 +16,7 @@ class Messenger(object):
     def set_commitments(self):
         response = json.dumps(self.clients.web.users.list)
         for item in response:
-            self.commitments[item['id']] = "initial: no commitments"
+            self.commitments[item['name']] = "initial: no commitments"
 
     def send_message(self, channel_id, msg):
         # in the case of Group and Private channels, RTM channel payload is a complex dictionary
