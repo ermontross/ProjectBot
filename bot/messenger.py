@@ -9,7 +9,7 @@ logger = logging.getLogger(__name__)
 class Messenger(object):
     def __init__(self, slack_clients):
         self.clients = slack_clients
-        self.schedule = ""
+        self.schedule = "no schedule right now"
 
     def send_message(self, channel_id, msg):
         # in the case of Group and Private channels, RTM channel payload is a complex dictionary
