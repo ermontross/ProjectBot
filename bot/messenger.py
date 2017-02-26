@@ -13,11 +13,6 @@ class Messenger(object):
         self.schedule = "no schedule right now"
         self.commitments = dict()
 
-    def set_commitments(self):
-        response = json.dumps(self.clients.web.users.list)
-        for item in response:
-            self.commitments[item['id']] = "no commitments"
-
     def send_message(self, channel_id, msg):
         # in the case of Group and Private channels, RTM channel payload is a complex dictionary
         if isinstance(channel_id, dict):
@@ -82,6 +77,5 @@ class Messenger(object):
         self.commitments[user_id] = msg_txt
 
     def write_commitments(self, channel_id, user_id):
-        user_id = user_id[1:]
         txt = "Your stand-up message today: " + self.commitments[user_id]
         self.send_message(channel_id, txt)
