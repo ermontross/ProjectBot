@@ -7,6 +7,7 @@ Potential Features:
 -  read members' daily stand-up messages and store what they committed to for the day
 -  tell member what he/she committed to upon request
 -  give member the daily and/or weekly schedule upon request  
+
 Based on the python-starter-bot from and hosted on [Beep Boop](https://beepboophq.com/docs/article/overview)
 
 ## Assumptions
