@@ -43,21 +43,25 @@ class RtmEventHandler(object):
             msg_txt = event['text']
 
             if self.clients.is_bot_mention(msg_txt) or self._is_direct_message(event['channel']):
-                # e.g. user typed: "@pybot tell me a joke!"
                 if 'help' in msg_txt:
-                    self.msg_writer.write_help_message(event['channel'])
-                elif re.search('hi|hey|hello|howdy', msg_txt):
+                    self.msg_writer.write_help_message(event['channel'], event['user'])
+                elif re.search('hi|hey|hello', msg_txt):
                     self.msg_writer.write_greeting(event['channel'], event['user'])
-                elif 'joke' in msg_txt:
-                    self.msg_writer.write_joke(event['channel'])
-                elif 'attachment' in msg_txt:
-                    self.msg_writer.demo_attachment(event['channel'])
-                elif 'echo' in msg_txt:
-                    self.msg_writer.send_message(event['channel'], msg_txt)
                 elif 'schedule' in msg_txt:
                     self.msg_writer.write_schedule(event['channel'])
                 elif 'stand-up' in msg_txt or 'commit' in msg_txt:
                     self.msg_writer.write_commitments(event['channel'], event['user'])
+                elif "what's left" in msg_txt or 'graduate' in msg_txt:
+                    if 'update' in msg_txt:
+                        self.msg_writer.update_remaining(event['channel'], event['user'], msg_txt.split("with")[-1])
+                    elif "remove" in msg_txt:
+                        self.msg_writer.remove_remaining(event['channel'], [int(s) for s in msg_txt.split() if s.isdigit()])
+                    else:
+                        self.msg_writer.write_remaining(event['channel'])
+                elif 'AMF' in msg_txt or 'amf' in msg_txt:
+                    self.msg_writer.write_amf(event['channel'], event['user'])
+                elif re.search('bye|farewell|peace|goodbye', msg_txt):
+                    self.msg_writer.write_goodbye(event['channel'])
                 else:
                     self.msg_writer.write_prompt(event['channel'])
 

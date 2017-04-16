@@ -36,3 +36,24 @@ class SlackClients(object):
         user_typing_json = {"type": "typing", "channel": channel_id}
         self.rtm.server.send_to_websocket(user_typing_json)
         time.sleep(sleep_time)
+
+    def is_message_from_emma(self, user_id):
+        x = self.web.users.list()
+        for user in x.body["members"]:
+            if user["id"] == user_id and user["name"] == "emma":
+                return True
+        return False
+
+    def is_message_from_taylor(self, user_id):
+        x = self.web.users.list()
+        for user in x.body["members"]:
+            if user["id"] == user_id and user["name"] == "taylor":
+                return True
+        return False
+
+    def is_message_from_parker(self, user_id):
+        x = self.web.users.list()
+        for user in x.body["members"]:
+            if user["id"] == user_id and user["name"] == "parker":
+                return True
+        return False
