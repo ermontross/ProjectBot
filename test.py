@@ -1,8 +1,11 @@
-from messenger import get_help_message
+from bot import messenger
 import unittest
 
+
 class TestMessenger(unittest.TestCase):
+
     def test_text_match(self):
+        m = messenger.Messenger(None)
         bot_uid = 1
         expected = '{}\n{}\n{}\n{}\n{}\n{}\n{}'.format(
             "I'm a somewhat friendly, somewhat sassy slackbot.  I'll *_respond_* to the following commands:",
@@ -12,7 +15,7 @@ class TestMessenger(unittest.TestCase):
             "> `<@" + bot_uid + "> remove <numbered item> from what's left` - I'll remove the numbered item from the list of what's left to do",
             "> `<@" + bot_uid + "> bye` - I'll bid you a sorrowful farewell :cry:",
             "> `<@" + bot_uid + "> schedule` - I'll respond with your schedule for the week.")
-        self.assertEqual(expected, get_help_message(bot_uid))
+        self.assertEqual(expected, m.get_help_message(bot_uid))
 
 if __name__ == "__main__":
     unittest.main()
