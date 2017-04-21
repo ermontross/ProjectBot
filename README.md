@@ -1,6 +1,8 @@
 ProjectBot
 =============
 
+[![Build Status](https://travis-ci.org/ermontross/ProjectBot.svg?branch=master)](https://travis-ci.org/ermontross/ProjectBot)
+
 ## Overview
 A Slack-bot designed for my CS Senior Project Team's Slack.  
 Potential Features:
