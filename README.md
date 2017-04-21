@@ -1,7 +1,5 @@
-[![Build Status](https://travis-ci.org/taylorjandrews/ProjectBot.svg?branch=master)](https://travis-ci.org/taylorjandrews/ProjectBot)
-
 ProjectBot
-=============
+==========
 
 [![Build Status](https://travis-ci.org/ermontross/ProjectBot.svg?branch=master)](https://travis-ci.org/ermontross/ProjectBot)
 
