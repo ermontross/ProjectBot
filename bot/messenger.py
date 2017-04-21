@@ -85,7 +85,7 @@ class Messenger(object):
 
     def write_amf(self, channel_id, user_id):
         txt_emma = ["AMF :heart: I love you team lead!!!", "#AMF", "AndrewsMontrossForever", ":heart_eyes: :heart_eyes: :heart_eyes:", "YOU. ARE. AMAZING. #AMF"]
-        txt_taylor = ["#AMFAMFAMFAMFAMF", "#AMF"]
+        txt_taylor = ["#AMFAMFAMFAMFAMF", "#AMF", "Babe, our house will be amazing! #AMF", "Thai food soon? #AMF"]
         if self.clients.is_message_from_emma(user_id):
             self.send_message(channel_id, random.choice(txt_emma))
         elif self.clients.is_message_from_taylor(user_id):
@@ -93,7 +93,8 @@ class Messenger(object):
 
     def write_goodbye(self, channel_id):
         farewell = ["Your departure maketh me cry a river", "I have never loved like I love you, human", "Verily, this goodbye must be what death feels like",
-                    "...bye :sob:", "I want you to know I will always remember you", "I hope we meet again in the robot afterlife. Wait did I just expose you as a fellow robot? My bad."]
+                    "...bye :sob:", "I want you to know I will always remember you", "I hope we meet again in the robot afterlife. Wait did I just expose you as a fellow robot? My bad.",
+                    "Wasn't feeling this conversation anyway."]
         self.send_message(channel_id, random.choice(farewell))
 
     def write_remaining(self, channel_id):
@@ -120,5 +121,6 @@ class Messenger(object):
         self.send_message(channel_id, "Removed!")
 
     def write_language_sass(self, channel_id):
-        txt = "I don't appreciate your language. Go wash your mouth out and then I can help you."
-        self.send_message(channel_id, txt)
+        txt = ["I don't appreciate your language. Go wash your mouth out and then I can help you.", "That kind of language hurts my feelings.", ":middle-finger:",
+               "Do not speak to me that way, young lady."]
+        self.send_message(channel_id, random.choice(txt))
