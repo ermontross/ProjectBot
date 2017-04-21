@@ -28,15 +28,19 @@ class Messenger(object):
             self.send_message(channel_id, txt)
         else:
             bot_uid = self.clients.bot_user_id()
-            txt = '{}\n{}\n{}\n{}\n{}\n{}\n{}'.format(
-                "I'm a somewhat friendly, somewhat sassy slackbot.  I'll *_respond_* to the following commands:",
-                "> `hi <@" + bot_uid + ">` - I'll respond with a randomized greeting mentioning your user :wave:",
-                "> `<@" + bot_uid + "> what's left?` - I'll let you know what you have to do before this project is over",
-                "> `<@" + bot_uid + "> update what's left with <item>` - I'll add something to the list of what's left to do",
-                "> `<@" + bot_uid + "> remove <numbered item> from what's left` - I'll remove the numbered item from the list of what's left to do",
-                "> `<@" + bot_uid + "> bye` - I'll bid you a sorrowful farewell :cry:",
-                "> `<@" + bot_uid + "> schedule` - I'll respond with your schedule for the week.")
+            txt = self.get_help_message(bot_uid)
             self.send_message(channel_id, txt)
+
+    def get_help_message(self, bot_uid):
+        txt = '{}\n{}\n{}\n{}\n{}\n{}\n{}'.format(
+            "I'm a somewhat friendly, somewhat sassy slackbot.  I'll *_respond_* to the following commands:",
+            "> `hi <@" + bot_uid + ">` - I'll respond with a randomized greeting mentioning your user :wave:",
+            "> `<@" + bot_uid + "> what's left?` - I'll let you know what you have to do before this project is over",
+            "> `<@" + bot_uid + "> update what's left with <item>` - I'll add something to the list of what's left to do",
+            "> `<@" + bot_uid + "> remove <numbered item> from what's left` - I'll remove the numbered item from the list of what's left to do",
+            "> `<@" + bot_uid + "> bye` - I'll bid you a sorrowful farewell :cry:",
+            "> `<@" + bot_uid + "> schedule` - I'll respond with your schedule for the week.")
+        return txt
 
     def write_greeting(self, channel_id, user_id):
         greetings = ['Hi', 'Hello', 'Nice to meet you', 'Salutations', 'Greetings']

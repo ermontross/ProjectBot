@@ -3,6 +3,8 @@
 ProjectBot
 =============
 
+[![Build Status](https://travis-ci.org/ermontross/ProjectBot.svg?branch=master)](https://travis-ci.org/ermontross/ProjectBot)
+
 ## Overview
 A Slack-bot designed for my CS Senior Project Team's Slack. Features:
 -  Read members' daily stand-up messages and store what they committed to for the day
