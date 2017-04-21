@@ -53,7 +53,18 @@ class RtmEventHandler(object):
                 elif 'schedule' in msg_txt:
                     self.msg_writer.write_schedule(event['channel'])
                 elif 'stand-up' in msg_txt or 'commit' in msg_txt:
-                    self.msg_writer.write_commitments(event['channel'], event['user'])
+                    if 'taylor' in msg_txt or 'Taylor' in msg_txt:
+                        self.msg_writer.write_commitments(event['channel'], self.clients.get_user_id("taylor"), "Taylor's")
+                    if 'pete' in msg_txt or 'Pete' in msg_txt:
+                        self.msg_writer.write_commitments(event['channel'], self.clients.get_user_id("pete_m"), "Pete's")
+                    if 'emma' in msg_txt or 'Emma' in msg_txt:
+                        self.msg_writer.write_commitments(event['channel'], self.clients.get_user_id("emma"), "Emma's")
+                    if 'ben' in msg_txt or 'Ben' in msg_txt:
+                        self.msg_writer.write_commitments(event['channel'], self.clients.get_user_id("bendroste"), "Ben's")
+                    if 'parker' in msg_txt or 'Parker' in msg_txt:
+                        self.msg_writer.write_commitments(event['channel'], self.clients.get_user_id("parker"), "Parker's")
+                    if not re.search('[Tt]aylor|[Ee]mma|[Bb]en|[Pp]arker|[Pp]ete', msg_txt):
+                        self.msg_writer.write_commitments(event['channel'], event['user'])
                 elif "what's left" in msg_txt or 'graduate' in msg_txt:
                     if 'update' in msg_txt:
                         self.msg_writer.update_remaining(event['channel'], event['user'], msg_txt.split("with")[-1])
@@ -69,10 +80,10 @@ class RtmEventHandler(object):
                     self.msg_writer.write_prompt(event['channel'])
 
             elif event['channel'] == self.stand_up:
-                self.msg_writer.update_commitments(self.stand_up, event['user'], msg_txt)
+                self.msg_writer.update_commitments(event['user'], msg_txt)
 
             elif event['channel'] == self.get_bottest_channel_id():
-                self.msg_writer.update_commitments(self.get_bottest_channel_id(), event['user'], msg_txt)
+                self.msg_writer.update_commitments(event['user'], msg_txt)
 
         elif 'user' not in event and self._is_direct_message(event['channel']):
             msg_txt = event['text']

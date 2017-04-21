@@ -38,22 +38,28 @@ class SlackClients(object):
         time.sleep(sleep_time)
 
     def is_message_from_emma(self, user_id):
-        x = self.web.users.list()
-        for user in x.body["members"]:
+        users = self.web.users.list()
+        for user in users.body["members"]:
             if user["id"] == user_id and user["name"] == "emma":
                 return True
         return False
 
     def is_message_from_taylor(self, user_id):
-        x = self.web.users.list()
-        for user in x.body["members"]:
+        users = self.web.users.list()
+        for user in users.body["members"]:
             if user["id"] == user_id and user["name"] == "taylor":
                 return True
         return False
 
     def is_message_from_parker(self, user_id):
-        x = self.web.users.list()
-        for user in x.body["members"]:
+        users = self.web.users.list()
+        for user in users.body["members"]:
             if user["id"] == user_id and user["name"] == "parker":
                 return True
         return False
+
+    def get_user_id(self, name):
+        users = self.web.users.list()
+        for user in users.body["members"]:
+            if user["name"] == name:
+                return user["id"]
