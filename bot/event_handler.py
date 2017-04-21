@@ -81,10 +81,7 @@ class RtmEventHandler(object):
                 else:
                     self.msg_writer.write_prompt(event['channel'])
 
-            elif event['channel'] == self.stand_up:
-                self.msg_writer.update_commitments(event['user'], msg_txt)
-
-            elif event['channel'] == self.get_bottest_channel_id():
+            elif event['channel'] == self.get_standup_channel_id():
                 self.msg_writer.update_commitments(event['user'], msg_txt)
 
         elif 'user' not in event and self._is_direct_message(event['channel']):
