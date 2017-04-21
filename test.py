@@ -6,7 +6,7 @@ class TestMessenger(unittest.TestCase):
 
     def test_text_match(self):
         m = messenger.Messenger(None)
-        bot_uid = 1
+        bot_uid = "emma"
         expected = '{}\n{}\n{}\n{}\n{}\n{}\n{}'.format(
             "I'm a somewhat friendly, somewhat sassy slackbot.  I'll *_respond_* to the following commands:",
             "> `hi <@" + bot_uid + ">` - I'll respond with a randomized greeting mentioning your user :wave:",
