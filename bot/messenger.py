@@ -39,11 +39,12 @@ class Messenger(object):
             "> `<@" + bot_uid + "> update what's left with <item>` - I'll add something to the list of what's left to do",
             "> `<@" + bot_uid + "> remove <numbered item> from what's left` - I'll remove the numbered item from the list of what's left to do",
             "> `<@" + bot_uid + "> bye` - I'll bid you a sorrowful farewell :cry:",
+            "> '<@" + bot_uid + "> stand-up - I'll let you know what you committed to today!"
             "> `<@" + bot_uid + "> schedule` - I'll respond with your schedule for the week.")
         return txt
 
     def write_greeting(self, channel_id, user_id):
-        greetings = ['Hi', 'Hello', 'Nice to meet you', 'Salutations', 'Greetings human']
+        greetings = ['Hi', 'Hello', 'Nice to meet you', 'Salutations', 'Greetings']
         txt = '{}, <@{}>!'.format(random.choice(greetings), user_id)
         self.send_message(channel_id, txt)
 
@@ -76,12 +77,16 @@ class Messenger(object):
         txt = self.schedule
         self.send_message(channel_id, txt)
 
-    def upate_commitments(self, channel_id, user_id, msg_txt):
+    def update_commitments(self, user_id, msg_txt):
         self.commitments[user_id] = msg_txt
 
-    def write_commitments(self, channel_id, user_id):
-        txt = "Your stand-up message today: " + self.commitments[user_id]
-        self.send_message(channel_id, txt)
+    def write_commitments(self, channel_id, user_id, user_name="Your"):
+        if user_id not in self.commitments:
+            txt = "Have you ever actually done anything in standup human?"
+            self.send_message(channel_id, txt)
+        else:
+            txt = user_name + " stand-up message today: " + self.commitments[user_id]
+            self.send_message(channel_id, txt)
 
     def write_amf(self, channel_id, user_id):
         txt_emma = ["AMF :heart: I love you team lead!!!", "#AMF", "AndrewsMontrossForever", ":heart_eyes: :heart_eyes: :heart_eyes:", "YOU. ARE. AMAZING. #AMF"]
