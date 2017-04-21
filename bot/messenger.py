@@ -121,6 +121,6 @@ class Messenger(object):
         self.send_message(channel_id, "Removed!")
 
     def write_language_sass(self, channel_id):
-        txt = ["I don't appreciate your language. Go wash your mouth out and then I can help you.", "That kind of language hurts my feelings.", ":middle-finger:",
+        txt = ["I don't appreciate your language. Go wash your mouth out and then I can help you.", "That kind of language hurts my feelings.", ":middle_finger:",
                "Do not speak to me that way, young lady."]
         self.send_message(channel_id, random.choice(txt))

@@ -43,7 +43,7 @@ class RtmEventHandler(object):
             msg_txt = event['text']
 
             if self.clients.is_bot_mention(msg_txt) or self._is_direct_message(event['channel']):
-                if re.search('fuck|shit|bitch|stupid|damn|:middle-finger:', msg_txt):
+                if re.search('fuck|shit|bitch|stupid|damn|:middle_finger:', msg_txt):
                     self.msg_writer.write_language_sass(event['channel'])
                 elif 'help' in msg_txt:
                     self.msg_writer.write_help_message(event['channel'], event['user'])
