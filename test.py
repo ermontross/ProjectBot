@@ -14,7 +14,7 @@ class TestMessenger(unittest.TestCase):
             "> `<@" + bot_uid + "> update what's left with <item>` - I'll add something to the list of what's left to do",
             "> `<@" + bot_uid + "> remove <numbered item> from what's left` - I'll remove the numbered item from the list of what's left to do",
             "> `<@" + bot_uid + "> bye` - I'll bid you a sorrowful farewell :cry:",
-            "> '<@" + bot_uid + "> stand-up - I'll let you know what you committed to today!"
+            "> `<@" + bot_uid + "> stand-up` - I'll let you know what you committed to today!"
             "> `<@" + bot_uid + "> schedule` - I'll respond with your schedule for the week.")
         self.assertEqual(expected, m.get_help_message(bot_uid))
 
