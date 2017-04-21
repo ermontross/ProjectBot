@@ -118,3 +118,7 @@ class Messenger(object):
                 del self.remaining[i-1]
 
         self.send_message(channel_id, "Removed!")
+
+    def write_language_sass(self, channel_id):
+        txt = "I don't appreciate your language. Go wash your mouth out and then I can help you."
+        self.send_message(channel_id, txt)
