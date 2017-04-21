@@ -9,10 +9,13 @@ class RtmEventHandler(object):
     def __init__(self, slack_clients, msg_writer):
         self.clients = slack_clients
         self.msg_writer = msg_writer
-        self.stand_up = self.get_standup()
+        self.stand_up = self.get_standup_channel_id()
 
-    def get_standup(self):
+    def get_standup_channel_id(self):
         return self.clients.web.channels.get_channel_id('stand-up')
+
+    def get_bottest_channel_id(self):
+        return self.clients.web.channels.get_channel_id('testing-bots')
 
     def handle(self, event):
 
@@ -67,6 +70,9 @@ class RtmEventHandler(object):
 
             elif event['channel'] == self.stand_up:
                 self.msg_writer.update_commitments(self.stand_up, event['user'], msg_txt)
+
+            elif event['channel'] == self.get_bottest_channel_id():
+                self.msg_writer.update_commitments(self.get_bottest_channel_id(), event['user'], msg_txt)
 
         elif 'user' not in event and self._is_direct_message(event['channel']):
             msg_txt = event['text']

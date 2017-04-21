@@ -39,7 +39,7 @@ class Messenger(object):
             self.send_message(channel_id, txt)
 
     def write_greeting(self, channel_id, user_id):
-        greetings = ['Hi', 'Hello', 'Nice to meet you', 'Salutations', 'Greetings human']
+        greetings = ['Hi', 'Hello', 'Nice to meet you', 'Salutations', 'Greetings']
         txt = '{}, <@{}>!'.format(random.choice(greetings), user_id)
         self.send_message(channel_id, txt)
 
@@ -72,12 +72,16 @@ class Messenger(object):
         txt = self.schedule
         self.send_message(channel_id, txt)
 
-    def upate_commitments(self, channel_id, user_id, msg_txt):
+    def update_commitments(self, channel_id, user_id, msg_txt):
         self.commitments[user_id] = msg_txt
 
     def write_commitments(self, channel_id, user_id):
-        txt = "Your stand-up message today: " + self.commitments[user_id]
-        self.send_message(channel_id, txt)
+        if user_id not in self.commitments:
+            txt = "Have you ever actually done anything in standup human?"
+            self.send_message(channel_id, txt)
+        else:
+            txt = "Your stand-up message today: " + self.commitments[user_id]
+            self.send_message(channel_id, txt)
 
     def write_amf(self, channel_id, user_id):
         txt_emma = ["AMF :heart: I love you team lead!!!", "#AMF", "AndrewsMontrossForever", ":heart_eyes: :heart_eyes: :heart_eyes:", "YOU. ARE. AMAZING. #AMF"]
